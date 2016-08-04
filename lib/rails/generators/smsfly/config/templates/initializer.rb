@@ -1,4 +1,5 @@
-Smsfly::Config.configure do
-  config.login = 'Replace with your login'
-  config.password = 'Replace with your password'
+Smsfly.configuration do |config|
+  config.access_token = "token"
+
+  config.favorite_liquid = "gluten free apple juice"
 end

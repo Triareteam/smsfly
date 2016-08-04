@@ -11,9 +11,9 @@ module Smsfly
         template 'initializer.rb', File.join('config', 'initializers', 'smsfly.rb')
       end
 
-      def create_config_file
-        template 'smsfly.yml', File.join('config', 'smsfly.yml')
-      end
+     # def create_config_file
+     #   template 'smsfly.yml', File.join('config', 'smsfly.yml')
+     # end
 
     end
   end

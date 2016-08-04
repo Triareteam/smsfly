@@ -1,1 +1,4 @@
-config_values = Smsfly::Config.parse_config_file(File.join(Rails.root, 'config', 'smsfly.yml'))
+Smsfly::Config.configure do
+  config.login = 'Replace with your login'
+  config.password = 'Replace with your password'
+end

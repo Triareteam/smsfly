@@ -9,6 +9,8 @@ module Smsfly
 
       def create_initializer_file
         template 'initializer.rb', File.join('config', 'initializers', 'smsfly.rb')
+        puts 'Configure file was created!'
+        puts 'Please configure this file  config/initializers/smsfly.rb'
       end
 
      # def create_config_file

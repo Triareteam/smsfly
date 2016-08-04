@@ -11,6 +11,6 @@ module Smsfly
 
   def self.test
     puts 'You login:' + Smsfly.login
-    puts 'You password:'  +Smsfly.paswword
+    puts 'You password:'  +Smsfly.password
   end
 end

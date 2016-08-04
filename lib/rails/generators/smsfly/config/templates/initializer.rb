@@ -1,1 +1,1 @@
-Smsfly::Session.new_from_file(File.join(Rails.root, 'config', 'smsfly.yml'))
+config_values = Smsfly::Config.parse_config_file(File.join(Rails.root, 'config', 'smsfly.yml'))

@@ -1,4 +1,5 @@
-require "smsfly/version"
+require 'smsfly/version'
+require 'smsfly/config'
 require 'net/http'
 require 'uri'
 

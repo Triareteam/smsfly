@@ -4,7 +4,6 @@ require 'net/http'
 require 'uri'
 
 module Smsfly
-  extend Config
   def self.send
     puts "Sms send!"
   end

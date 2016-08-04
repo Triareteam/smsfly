@@ -9,4 +9,5 @@
 /tmp/
 # RubyMine project files
 .idea
+.idea/*
 

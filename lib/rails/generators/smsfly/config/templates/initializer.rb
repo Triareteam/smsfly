@@ -1,5 +1,4 @@
 Smsfly.configuration do |config|
-  config.access_token = "token"
-
-  config.favorite_liquid = "gluten free apple juice"
+  config.login = 'You login at  https://sms-fly.com/'
+  config.password = 'Your password at  https://sms-fly.com/'
 end

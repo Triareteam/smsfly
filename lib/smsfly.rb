@@ -6,15 +6,11 @@ require 'uri'
 module Smsfly
 
   extend Configuration
+  define_setting :login
+  define_setting :password
 
-  define_setting :access_token
-  define_setting :access_secret
-
-  define_setting :favorite_liquid, "apple juice"
-  define_setting :least_favorite_liquid, "seltzer water"
-
-
-  def self.send
-    puts "Sms send!"
+  def self.test
+    puts 'You login:' + Smsfly.login
+    puts 'You password:'  +Smsfly.paswword
   end
 end

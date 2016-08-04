@@ -20,6 +20,15 @@ Or install it yourself as:
 
     $ gem install smsfly
 
+
+Then run:
+
+    $ rails g smsfly:config
+
+which will generate default settings files:
+
+    config/smsfly.yml
+
 ## Usage
 
 TODO: Write usage instructions here

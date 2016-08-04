@@ -10,7 +10,7 @@ module Smsfly
   define_setting :password
 
   def self.test
-    puts 'You login:' + Smsfly.login
-    puts 'You password:'  +Smsfly.password
+    puts 'You login:' "#{Smsfly.login}"
+    puts 'You password:' "#{Smsfly.password}"
   end
 end

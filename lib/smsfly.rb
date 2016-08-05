@@ -11,7 +11,7 @@ module Smsfly
   define_setting :login, 'Please configure this file  config/initializers/smsfly.rb'
   define_setting :password, 'Please configure this file  config/initializers/smsfly.rb'
 
-  def self.test_connection
+  def self.connect_info
 
     if Smsfly.login.length == 12
       puts 'You login:' "#{Smsfly.login}"
@@ -59,7 +59,7 @@ XML
   end
 
 
-  def self.send_sms(text , recipient)
+  def self.send_sms(text, recipient)
     description = 'Smsfly'
     start_time = 'AUTO'
     end_time = 'AUTO'

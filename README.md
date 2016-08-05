@@ -9,7 +9,7 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'smsfly'
+gem 'smsfly', '>= 0.3.4'
 ```
 
 And then execute:
@@ -27,11 +27,42 @@ Then run:
 
 which will generate default settings files:
 
-    config/smsfly.yml
+    config/initializers/smsfly.rb
+
+Then then configurate smsfly.rb file:
+
+    ```ruby
+    Smsfly.configuration do |config|
+      config.login = 'You login' # Like this 380675807873
+      config.password = 'You password' # Like this  ZhHtgj4Z
+    end
+    ```
+
+
+
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO: 
+
+For show you login and password run:
+
+    $ rais c
+    $ Smsfly.connect_info
+
+If the file *smsfly.rb* is set up correctly 
+You can send a test message to your own login/phone
+
+    ```ruby
+    Smsfly.test_sms('You random text')
+    ```
+
+
+To send a message to other numbers, use
+
+    ```ruby
+    Smsfly.send_sms(text, recipient)  #  For example Smsfly.send_sms('Hellow Word', '380675807873')
+    ```
 
 ## Development
 
@@ -41,7 +72,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/smsfly. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Serhii-Danovsky/smsfly. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License

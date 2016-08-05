@@ -10,7 +10,7 @@ TODO:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'smsfly', '>= 0.3.8'
+gem 'smsfly', '~> 0.4.1'
 ```
 
 And then execute:

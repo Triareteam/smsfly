@@ -3,14 +3,14 @@
 Welcome! 
  This Ruby gem  helps You to send SMS using API https://sms-fly.com/
 
-TODO: Delete this and the text above, and describe your gem
+TODO: 
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'smsfly', '>= 0.3.4'
+gem 'smsfly', '>= 0.3.8'
 ```
 
 And then execute:

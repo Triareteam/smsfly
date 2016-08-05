@@ -31,12 +31,12 @@ which will generate default settings files:
 
 Then then configurate smsfly.rb file:
 
-    ```ruby
-    Smsfly.configuration do |config|
-      config.login = 'You login' # Like this 380675807873
-      config.password = 'You password' # Like this  ZhHtgj4Z
-    end
-    ```
+```ruby
+Smsfly.configuration do |config|
+  config.login = 'You login' # Like this 380675807873
+  config.password = 'You password' # Like this  ZhHtgj4Z
+end
+```
 
 
 
@@ -53,16 +53,16 @@ For show you login and password run:
 If the file *smsfly.rb* is set up correctly 
 You can send a test message to your own login/phone
 
-    ```ruby
-    Smsfly.test_sms('You random text')
-    ```
+```ruby
+Smsfly.test_sms('You random text')
+```
 
 
 To send a message to other numbers, use
 
-    ```ruby
-    Smsfly.send_sms(text, recipient)  #  For example Smsfly.send_sms('Hellow Word', '380675807873')
-    ```
+```ruby
+Smsfly.send_sms(text, recipient)  #  For example Smsfly.send_sms('Hellow Word', '380675807873')
+```
 
 ## Development
 

@@ -26,7 +26,7 @@ module Smsfly
 
 
 
-  def connection(login,password)
+  def self.connection(login,password)
     full_url = "http://sms-fly.com/api/api.php"
     uri = URI.parse(full_url)
     headers = {'Content-Type' => "text/xml", 'Accept' => "text/xml" }

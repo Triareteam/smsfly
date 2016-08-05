@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Serhii-Danovsky"]
   spec.email         = ["jipebed@gmail.com"]
 
-  spec.summary       = %q{Gem for send SMS with API sms-fly.com.}
-  spec.description   = %q{Gem for ruby on rails for send SMS with API sms-fly.co.}
+  spec.summary       = %q{Gem for send SMS with API https://sms-fly.com/}
+  spec.description   = %q{Send SMS messages with API https://sms-fly.com/}
   spec.homepage      = "https://github.com/Serhii-Danovsky/smsfly"
   spec.license       = "MIT"
 

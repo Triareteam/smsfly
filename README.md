@@ -1,6 +1,7 @@
 # Smsfly
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/smsfly`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome! 
+ This Ruby gem  helps You to send SMS using API https://sms-fly.com/
 
 TODO: Delete this and the text above, and describe your gem
 
@@ -47,7 +48,7 @@ TODO:
 
 For show you login and password run:
 
-    $ rais c
+    $ rails c
     $ Smsfly.connect_info
 
 If the file *smsfly.rb* is set up correctly 

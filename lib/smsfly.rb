@@ -13,7 +13,7 @@ module Smsfly
 
   def self.test_connection
 
-    if Smsfly.login.length == 12 && (Smsfly.login.is_a? Integer)
+    if Smsfly.login.length == 12
       puts 'You login:' "#{Smsfly.login}"
       puts 'You password:' "#{Smsfly.password}"
       connection(Smsfly.login,Smsfly.password)

@@ -27,8 +27,8 @@ module Smsfly
 
 
 
-  def self.test_sms(text , recipient)
-
+  def self.test_sms(text)
+    recipient = Smsfly.login
     description = 'Smsfly Test Message'
     start_time = 'AUTO'
     end_time = 'AUTO'
@@ -55,6 +55,36 @@ XML
     request.body = xml_string
     response = http.request(request)
     puts response.code
+    puts response.body
+  end
+
+
+  def self.send_sms(text , recipient)
+    description = 'Smsfly'
+    start_time = 'AUTO'
+    end_time = 'AUTO'
+    rate = 1
+    lifetime = 4
+    source = 'SMS'
+    xml_string = <<XML
+      <?xml version="1.0" encoding="utf-8"?>
+      <request>
+      <operation>SENDSMS</operation>
+      <message start_time="#{start_time}" end_time="#{end_time}" lifetime="#{lifetime}" rate="#{rate}" desc="'#{description}" source="#{source}">
+      <body>#{text}</body>
+      <recipient>#{recipient}</recipient>
+      </message>
+      </request>
+XML
+
+    full_url = "http://sms-fly.com/api/api.php"
+    uri = URI.parse(full_url)
+    headers = {'Content-Type' => "text/xml", 'Accept' => "text/xml" }
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Post.new(uri.request_uri, headers)
+    request.basic_auth login, password
+    request.body = xml_string
+    response = http.request(request)
     puts response.body
   end
 

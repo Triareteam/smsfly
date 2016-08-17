@@ -30,7 +30,7 @@ which will generate default settings files:
 
     config/initializers/smsfly.rb
 
-Then then configurate smsfly.rb file:
+Then configurate smsfly.rb file:
 
 ```ruby
 Smsfly.configuration do |config|

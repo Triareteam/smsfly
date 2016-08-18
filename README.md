@@ -10,7 +10,7 @@ TODO:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'smsfly', '~> 0.4.1'
+gem 'smsfly', '~> 0.4.3'
 ```
 
 And then execute:
@@ -39,7 +39,14 @@ Smsfly.configuration do |config|
 end
 ```
 
+Test connection to API:
 
+```ruby
+Smsfly.authentication?
+#this return
+# true - If authentication is successful 
+# false - If authentication failed
+```
 
 
 ## Usage

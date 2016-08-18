@@ -44,8 +44,8 @@ Test connection to API:
 ```ruby
 Smsfly.authentication?
 #this return
-# true - If authentication is successful 
-# false - If authentication failed
+true #- If authentication is successful 
+false #- If authentication failed
 ```
 
 

@@ -68,6 +68,32 @@ XML
 
   end
 
+  def self.balance
+    if  !self.authentication?
+      puts   "#{colorize('#############################', "red", "red")}"
+      puts   "#{colorize('#', "red", "red")}"+"#{colorize('Incorrect Login or Password', "red")}"+ "#{colorize('#', "red", "red")}"
+      puts   "#{colorize('#############################', "red", "red")}"
+      return false
+    else
+      xml_string = <<XML
+      <?xml version="1.0" encoding="utf-8"?>
+      <request>
+      <operation>GETBALANCE</operation>
+      </request>
+XML
+      full_url = "http://sms-fly.com/api/api.php"
+      uri = URI.parse(full_url)
+      headers = {'Content-Type' => "text/xml", 'Accept' => "text/xml" }
+      http = Net::HTTP.new(uri.host, uri.port)
+      request = Net::HTTP::Post.new(uri.request_uri, headers)
+      request.basic_auth login, password
+      request.body = xml_string
+      response = http.request(request)
+      balance =  response.body.match(/<balance>(.*)<\/balance>/)[1]
+      puts   "#{colorize('##', "red", "red")}"+"#{colorize("You balance: #{balance}  UAH",  "red")}"+"#{colorize('##', "red", "red")}"
+      return balance.to_f
+    end
+  end
 
   def self.test_sms(text)
     recipient = Smsfly.login

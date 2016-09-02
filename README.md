@@ -48,6 +48,14 @@ true #- If authentication is successful
 false #- If authentication failed
 ```
 
+Get your balance:
+
+```ruby
+Smsfly.balance
+#this return
+Float object(like "6.177" ,"5.655")#- If authentication is successful 
+false #- If authentication failed
+```
 
 ## Usage
 

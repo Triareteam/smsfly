@@ -1,4 +1,5 @@
 require 'smsfly/version'
+require 'smsfly/logger'
 require 'helpers/configuration'
 require 'net/http'
 require 'uri'
@@ -11,16 +12,20 @@ module Smsfly
   define_setting :login, 'Please configure this file  /config/initializers/smsfly.rb'
   define_setting :password, 'Please configure this file  /config/initializers/smsfly.rb'
 
+  class << self
+    delegate :debug, to: ::Smsfly::Logger
+  end
+
   def self.connect_info
 
     if Smsfly.login.length == 12
-      puts 'You login:' "#{Smsfly.login}"
-      puts 'You password:' "#{Smsfly.password}"
+      debug 'You login:' "#{Smsfly.login}"
+      debug 'You password:' "#{Smsfly.password}"
       return true
     else
-      puts  'Incorrect login'
-      puts  'Login must be like 380675807873'
-      puts  'Please configure this file  /config/initializers/smsfly.rb'
+      debug  'Incorrect login'
+      debug  'Login must be like 380675807873'
+      debug  'Please configure this file  /config/initializers/smsfly.rb'
       return false
     end
   end
@@ -36,8 +41,6 @@ module Smsfly
     bgColor_code = bgColors[bgColor]
     return "\033[#{bgColor_code};#{color_code}m#{text}\033[0m"
   end
-
-
 
   def self.authentication?
     xml_string = <<XML
@@ -55,14 +58,14 @@ XML
     request.body = xml_string
     response = http.request(request)
     if response.body.to_s == 'Access denied!'
-      puts   "#{colorize('#############################', "red", "red")}"
-      puts   "#{colorize('#', "red", "red")}"+"#{colorize('Incorrect Login or Password', "red")}"+ "#{colorize('#', "red", "red")}"
-      puts   "#{colorize('#############################', "red", "red")}"
+      debug   "#{colorize('#############################', "red", "red")}"
+      debug   "#{colorize('#', "red", "red")}"+"#{colorize('Incorrect Login or Password', "red")}"+ "#{colorize('#', "red", "red")}"
+      debug   "#{colorize('#############################', "red", "red")}"
       return false
     else
-      puts   "#{colorize('###########################', "green" , "green")}"
-      puts  "#{colorize('#', "green", "green")}"+ "#{colorize('Successful Authentication', "green")}"+ "#{colorize('#', "green", "green")}"
-      puts   "#{colorize('###########################', "green" , "green")}"
+      debug   "#{colorize('###########################', "green" , "green")}"
+      debug  "#{colorize('#', "green", "green")}"+ "#{colorize('Successful Authentication', "green")}"+ "#{colorize('#', "green", "green")}"
+      debug   "#{colorize('###########################', "green" , "green")}"
       return true
     end
 
@@ -70,9 +73,9 @@ XML
 
   def self.balance
     if  !self.authentication?
-      puts   "#{colorize('#############################', "red", "red")}"
-      puts   "#{colorize('#', "red", "red")}"+"#{colorize('Incorrect Login or Password', "red")}"+ "#{colorize('#', "red", "red")}"
-      puts   "#{colorize('#############################', "red", "red")}"
+      debug   "#{colorize('#############################', "red", "red")}"
+      debug   "#{colorize('#', "red", "red")}"+"#{colorize('Incorrect Login or Password', "red")}"+ "#{colorize('#', "red", "red")}"
+      debug   "#{colorize('#############################', "red", "red")}"
       return false
     else
       xml_string = <<XML
@@ -90,7 +93,7 @@ XML
       request.body = xml_string
       response = http.request(request)
       balance =  response.body.match(/<balance>(.*)<\/balance>/)[1]
-      puts   "#{colorize('##', "red", "red")}"+"#{colorize("You balance: #{balance}  UAH",  "red")}"+"#{colorize('##', "red", "red")}"
+      debug "#{colorize('##', "red", "red")}"+"#{colorize("You balance: #{balance}  UAH",  "red")}"+"#{colorize('##', "red", "red")}"
       return balance.to_f
     end
   end
@@ -122,8 +125,8 @@ XML
     request.basic_auth login, password
     request.body = xml_string
     response = http.request(request)
-    puts response.code
-    puts response.body
+    debug response.code
+    debug response.body
   end
 
 
@@ -153,7 +156,7 @@ XML
     request.basic_auth login, password
     request.body = xml_string
     response = http.request(request)
-    puts response.body
+    debug response.body
   end
 
 end

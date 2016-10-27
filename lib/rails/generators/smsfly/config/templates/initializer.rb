@@ -1,4 +1,7 @@
 Smsfly.configuration do |config|
-  config.login = ENV['SMS_FLY_USER'] # You login at  https://sms-fly.com/
-  config.password = ENV['SMS_FLY_PASS'] # Your password at  https://sms-fly.com/
+  config.login = 'You login' # Like this 380675807873
+  config.password = 'You password' # Like this  ZhHtgj4Z
+
+  #config.login = ENV['SMS_FLY_USER']
+  #config.password = ENV['SMS_FLY_PASS']
 end

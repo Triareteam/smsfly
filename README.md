@@ -10,7 +10,7 @@ TODO:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'smsfly', '~> 0.4.3'
+gem 'smsfly', '~> 0.4.5'
 ```
 
 And then execute:
@@ -38,6 +38,24 @@ Smsfly.configuration do |config|
   config.password = 'You password' # Like this  ZhHtgj4Z
 end
 ```
+Or another method
+
+```ruby
+#/YouApp/config/application.rb
+    module YouApp
+      class Application < Rails::Application
+      ENV['SMS_FLY_USER'] = 'You login' # Like this 380675807873
+      ENV['SMS_FLY_PASS'] # Your password at  https://sms-fly.com/
+      end
+    end
+#and  config/initializers/smsfly.rb
+    Smsfly.configuration do |config|
+      config.login = ENV['SMS_FLY_USER'] 
+      config.password = ENV['SMS_FLY_PASS']
+    end
+```
+
+
 
 Test connection to API:
 

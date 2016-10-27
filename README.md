@@ -45,7 +45,7 @@ Or another method
     module YouApp
       class Application < Rails::Application
       ENV['SMS_FLY_USER'] = 'You login' # Like this 380675807873
-      ENV['SMS_FLY_PASS'] # Your password at  https://sms-fly.com/
+      ENV['SMS_FLY_PASS'] = 'Your password' # Your password at  https://sms-fly.com/
       end
     end
 #and  config/initializers/smsfly.rb

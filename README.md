@@ -10,7 +10,7 @@ TODO:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'smsfly', '~> 0.4.5'
+gem 'smsfly', '~> 0.4.6'
 ```
 
 And then execute:
@@ -95,7 +95,7 @@ Smsfly.test_sms('You random text')
 To send a message to other numbers, use
 
 ```ruby
-Smsfly.send_sms(text, recipient)  #  For example Smsfly.send_sms('Hellow Word', '380675807873')
+Smsfly.send_sms(text, recipient , description , source)  #  For example Smsfly.send_sms('Hello Word', '380675807873' , 'Name for Sms' , 'Alfaname')
 ```
 
 ## Development

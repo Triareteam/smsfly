@@ -130,13 +130,11 @@ XML
   end
 
 
-  def self.send_sms(text, recipient)
-    description = 'Smsfly'
+  def self.send_sms(text, recipient , description , source )
     start_time = 'AUTO'
     end_time = 'AUTO'
     rate = 1
     lifetime = 4
-    source = 'SMS'
     xml_string = <<XML
       <?xml version="1.0" encoding="utf-8"?>
       <request>

@@ -98,6 +98,25 @@ To send a message to other numbers, use
 Smsfly.send_sms(text, recipient , description , source)  #  For example Smsfly.send_sms('Hello Word', '380675807873' , 'Name for Sms' , 'Alfaname')
 ```
 
+
+Add campaignID
+
+```ruby
+  log_obj  -  object where we write campaignID
+  log_filed - campaignID  feld
+  
+  # for example 
+  history  = HistoryItem.new()
+  history.save
+  Smsfly.send_sms(text, recipient , description , source  , {:log_obj => history, :log_filed => 'campaign_id'} ) 
+  # This write campaignID from API TO history.campaign_id
+```
+
+```ruby
+Smsfly.send_sms(text, recipient , description , source  , options = {} )  #  For example Smsfly.send_sms('Hello Word', '380675807873' , 'Name for Sms' , 'Alfaname'   , {:log_obj => 'Model', :log_filed => 'campaign_id'})
+```
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

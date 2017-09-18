@@ -130,7 +130,7 @@ XML
   end
 
 
-  def self.send_sms(text, recipient , description , source )
+  def self.send_sms(text, recipient , description , source  , options = {} )
     start_time = 'AUTO'
     end_time = 'AUTO'
     rate = 1
@@ -154,7 +154,51 @@ XML
     request.basic_auth login, password
     request.body = xml_string
     response = http.request(request)
+    p response.body
+    if response.body.match(/campaignID="(.*?)"/).present?
+      campaign = response.body.match(/campaignID="(.*?)"/)[1]
+    else
+      campaign = false
+    end
+
+    if campaign.present? && options[:log_obj].present? && options[:log_filed].present?
+      options[:log_obj].send("#{options[:log_filed]}=", campaign)
+      options[:log_obj].save
+    end
+  end
+
+
+
+  def self.get_status(text , options = {})
+
+    xml_string = <<XML
+     <?xml version="1.0" encoding="utf-8"?>
+      <request>
+        <operation>GETCAMPAIGNINFO</operation>
+        <message campaignID="#{text}" />
+      </request>
+XML
+
+    full_url = "http://sms-fly.com/api/api.php"
+    uri = URI.parse(full_url)
+    headers = {'Content-Type' => "text/xml", 'Accept' => "text/xml" }
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Post.new(uri.request_uri, headers)
+    request.basic_auth login, password
+    request.body = xml_string
+    response = http.request(request)
+    debug response.code
     debug response.body
+
+    if response.body.scan(/<state (.*?)></).present?
+      status_hash = Hash.new
+      response.body.scan(/<state (.*?)></).each do |e|
+        status_hash[e.first.match('status="(.*?)"')[1]] =  e.first.match(' messages="(.*?)"')[1]
+      end
+      return status_hash
+    else
+      return false
+    end
   end
 
 end

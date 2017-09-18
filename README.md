@@ -103,7 +103,7 @@ Add campaignID
 
 ```ruby
   log_obj  -  object where we write campaignID
-  log_filed - campaignID  feld
+  log_filed - campaignID  field
   
   # for example 
   history  = HistoryItem.new()
@@ -111,6 +111,8 @@ Add campaignID
   Smsfly.send_sms(text, recipient , description , source  , {:log_obj => history, :log_filed => 'campaign_id'} ) 
   # This write campaignID from API TO history.campaign_id
 ```
+
+To send a message without getting campaignID
 
 ```ruby
 Smsfly.send_sms(text, recipient , description , source  , options = {} )  #  For example Smsfly.send_sms('Hello Word', '380675807873' , 'Name for Sms' , 'Alfaname'   , {:log_obj => 'Model', :log_filed => 'campaign_id'})

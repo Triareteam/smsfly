@@ -119,6 +119,17 @@ Smsfly.send_sms(text, recipient , description , source  , options = {} )  #  For
 ```
 
 
+Get Sms Status
+
+```ruby
+Smsfly.get_status(campaignID)  # Smsfly.get_status(43545345) 
+# It return {"STOPFLAG"=>"0", "ALFANAMELIMITED"=>"0", "ERROR"=>"0", "USERSTOPED"=>"0", "STOPED"=>"0", "UNDELIV"=>"1", "EXPIRED"=>"0", "DELIVERED"=>"0", "SENT"=>"0", "PENDING"=>"0", "NEW"=>"0"} if  campaignID   valid
+# Or returrn false if campaignID = no valid
+
+
+```
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
